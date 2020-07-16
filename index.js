@@ -6,7 +6,7 @@ const $ = require("arrayfriend"); // uhhhh yeah, im repping my own library
  */
 const generateDeck = () => {
   const suites = ["♥", "♠", "♣", "♦"];
-  const nonNumeric = ["Jack", "King", "Queen", "Ace"];
+  const royal = ["Jack", "King", "Queen"];
 
   return $(...suites)
     .map((suite) => {
@@ -16,7 +16,7 @@ const generateDeck = () => {
         value: i + 2,
       }));
       suiteCards.concat(
-        nonNumeric.map((c) => ({
+        royal.map((c) => ({
           name: `${suite}${c}`,
           suite,
           value: 10,
