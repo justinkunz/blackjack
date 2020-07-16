@@ -10,11 +10,14 @@ const generateDeck = () => {
 
   return $(...suites)
     .map((suite) => {
+      // Initiate suite deck w/ numeric cards
       const suiteCards = $.withLength(8).map((n, i) => ({
         name: `${suite}${i + 2}`,
         suite,
         value: i + 2,
       }));
+
+      // Concat royal cards
       suiteCards.concat(
         royal.map((c) => ({
           name: `${suite}${c}`,
@@ -22,6 +25,8 @@ const generateDeck = () => {
           value: 10,
         }))
       );
+
+      // Add Ace
       suiteCards.push({
         name: `${suite}Ace`,
         suite,
@@ -103,6 +108,7 @@ const dealerDraw = (deck, dealer, player) => {
     dealerSum.some((score) => playerSum.every((pscore) => score > pscore));
 
   if (!dealerStay) {
+    // Timeout to add some...suspense
     setTimeout(() => {
       const nextCard = deck.pop();
       dealer.push(nextCard);
@@ -184,7 +190,7 @@ const printHands = (dealer, player) => {
  */
 const startGame = () => {
   const deck = generateDeck().shuffle();
-  const dealersHand = [deck.pop(), deck.pop()];
+  const dealersHand = [deck.pop(), deck.pop()]; // .pop() less IO intensive than .shift()
   const playersHand = [deck.pop(), deck.pop()];
 
   round(deck, dealersHand, playersHand);
