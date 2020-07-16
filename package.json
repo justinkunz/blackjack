@@ -1,0 +1,16 @@
+{
+  "name": "blackjack",
+  "version": "1.0.0",
+  "description": "Simple blackjack CLI",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "Justin Kunz",
+  "license": "MIT",
+  "dependencies": {
+    "arrayfriend": "^1.0.3",
+    "inquirer": "^7.3.2"
+  }
+}
